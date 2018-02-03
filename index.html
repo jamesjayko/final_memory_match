@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Memory Match</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"></link>
+    <script src="model.js"></script>
+    <script src="controller.js"></script>
+    <script src="view.js"></script>
+</head>
+
+<body>
+    <div class="landscape">
+        <h3>Please use landscape mode to view this game</h3>
+    </div>
+    <div id="app_area" class="container-fluid">
+        <div id="top_row" class="row">
+            <div>
+                <img src="images/civ5_logo.png" alt="">
+            </div>
+        </div>
+        <div id="mid_row" class "row">
+            <div id="stats_area" class="ps-top-to-bottom col-xs-3">
+                <div>Games Played:
+                    <div id="game_played" class="fade_line"></div>
+                </div>
+                <div>Attempts:
+                    <div id="attempts" class="fade_line"></div>
+                </div>
+                <div>Accuracy:
+                    <div id="accuracy" class="fade_line"></div>
+                </div>
+            </div>
+            <div id="game_area" class="col-xs-9">
+            </div>
+        </div>
+        <div id="bottom_row" class="row">
+            <button class="pause_butt btn btn-custom col-xs-1">
+                <span class="glyphicon glyphicon-headphones"></span>
+            </button>
+            <button class="reset_butt btn btn-custom col-xs-1 col-xs-offset-1">
+                <span class="glyphicon glyphicon-tower"></span> RESET</button>
+            <div id="civ_happy_container" class="ps-top-to-bottom col-xs-7 col-xs-offset-1">
+                <div>Golden Age !</div>
+                <div id="civ_happy_bar"></div>
+                <div></div>
+            </div>
+            <div id="civ_face_container" class="col-xs-7 col-xs-offset-4">
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-1 col-xs-1"></div>
+                <div class="col-md-1 col-xs-1"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="modal" class="modal fade in">
+        <div class="happy_lose_modal_content modal_content">
+            <div class="close_button_container">
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>
