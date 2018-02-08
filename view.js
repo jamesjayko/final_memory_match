@@ -12,7 +12,7 @@ var View = {
     Controller.get_deck(); // calls to double the imgs to make the deck and it's callback functions.
     this.display_stats();
     $(".pause_butt")
-      .text("PAUSE")
+      .text("STOP MUSIC")
       .on("click", this.pause_theme_music); // click handle for reset button.
     $(".reset_butt")
       .text("RESET")
@@ -20,7 +20,7 @@ var View = {
   },
 
   pause_theme_music() {
-    $(".pause_butt").text(!model.theme_music.paused ? "PLAY" : "PAUSE");
+    $(".pause_butt").text(!model.theme_music.paused ? "PLAY MUSIC" : "STOP MUSIC");
 
     if (!model.theme_music.paused) {
       model.theme_music.pause();
