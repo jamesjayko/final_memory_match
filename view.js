@@ -12,7 +12,7 @@ var View = {
     Controller.get_deck(); // calls to double the imgs to make the deck and it's callback functions.
     this.display_stats();
     $(".pause_butt")
-      .text("STOP MUSIC")
+      .text("STOP")
       .on("click", this.pause_theme_music); // click handle for reset button.
     $(".reset_butt")
       .text("RESET")
@@ -20,7 +20,9 @@ var View = {
   },
 
   pause_theme_music() {
-    $(".pause_butt").text(!model.theme_music.paused ? "PLAY MUSIC" : "STOP MUSIC");
+    $(".pause_butt").text(
+      !model.theme_music.paused ? "PLAY" : "STOP"
+    );
 
     if (!model.theme_music.paused) {
       model.theme_music.pause();
@@ -76,10 +78,10 @@ var View = {
     if (model.keep_going == true) {
       if (model.happy_points <= 64 && model.happy_points > 0) {
         model.happy_points -= 2;
-        console.log("it's going down by 2", model.happy_points);
+        // console.log("it's going down by 2", model.happy_points);
       } else if (model.happy_points > 64) {
         model.happy_points -= 1;
-        console.log("it's going down by 1", model.happy_points);
+        // console.log("it's going down by 1", model.happy_points);
       } else if (model.happy_points === 0 && model.keep_going === true) {
         model.you_lose.play();
         this.open_modal_handle("images/you_lose_modal.png");
@@ -101,21 +103,21 @@ var View = {
   },
 
   open_modal_handle(modal_custom) {
-    console.log("modal opened!");
+    // console.log("modal opened!");
     model.keep_going = false;
     $(".modal_content img").remove();
-    let modal_img = $("<img>")
-      .attr("src", modal_custom)
-      .css("width", "100%")
-      .css("height", "100%");
-    $(".modal_content").append(modal_img);
+    let modal_img = $("<img>", {
+      src: modal_custom,
+      class: "modal_size",
+    })
     $(".close_modal_button").remove();
-    let close_button = $("<button>")
-      .attr("type", "button")
-      .attr("data-dismiss", "modal")
-      .addClass("close_modal_button btn btn-info")
-      .text("Close");
-    $(".close_button_container").append(close_button);
+    let close_button = $("<button>", {
+      type: "button",
+      "data-dismiss": "modal",
+      class: "close_modal_button btn btn-info",
+      text: "Close"
+    })
+    $(".modal_content").append(modal_img, close_button);    
     model.modal = document.getElementById("modal");
     model.modal.style.display = "block";
     this.close_modal_handle();

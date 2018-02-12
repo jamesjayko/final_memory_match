@@ -67,7 +67,7 @@ var Controller = {
         .attr("style") === "transform: perspective(600px) rotateY(180deg);" ||
       model.clickable === false
     ) {
-      console.log("already clicked");
+      // console.log("already clicked");
       return;
     }
 
@@ -80,12 +80,12 @@ var Controller = {
     if (model.first_rsc === null) {
       model.first_card = this;
       model.first_rsc = $(this).attr("resource");
-      console.log(model.first_rsc);
+      // console.log(model.first_rsc);
     } else {
       model.second_card = this;
       model.second_rsc = $(this).attr("resource");
       model.clickable = false;
-      console.log(model.second_rsc);
+      // console.log(model.second_rsc);
       Controller.check_match();
     }
   },
@@ -94,7 +94,7 @@ var Controller = {
     if (model.first_rsc === model.second_rsc) {
       model.match_count++;
       model.happy_points += 8;
-      console.log("they match!");
+      // console.log("they match!");
       model.match_found.play();
       this.check_win();
       if (model.match_count % 3 === 0 && model.eras_index < 3) {
@@ -105,7 +105,7 @@ var Controller = {
     } else {
       model.first_rsc = null;
       model.second_rsc = null;
-      console.log("no match!");
+      // console.log("no match!");
       setTimeout(function() {
         Controller.flipIt_back(
           model.first_card,
@@ -125,7 +125,7 @@ var Controller = {
     model.second_rsc = null;
     model.clickable = true;
     if (model.match_count === 9) {
-      console.log("you got 9 matches YOU WIN");
+      // console.log("you got 9 matches YOU WIN");
       model.games_played++;
       model.happy_points += 8;
       model.accuracy = parseInt(model.match_count / model.attempts * 100);
