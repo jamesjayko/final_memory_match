@@ -218,7 +218,7 @@
   transform: perspective(600px) rotateY(0deg);
   -webkit-transform: perspective(600px) rotateY(0deg);
   -moz-transform: perspective(600px) rotateY(0deg);
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transition: transform 0.5s linear 0s;
   -webkit-transition: transform 0.5s linear 0s;  
   -moz-transition: transform 0.5s linear 0s;  
@@ -232,7 +232,7 @@
   transform: perspective(600px) rotateY(-180deg);
   -webkit-transform: perspective(600px) rotateY(-180deg);
   -moz-transform: perspective(600px) rotateY(-180deg);
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   transition: transform 0.5s linear 0s;
   -webkit-transition: transform 0.5s linear 0s;  
   -moz-transition: transform 0.5s linear 0s;
