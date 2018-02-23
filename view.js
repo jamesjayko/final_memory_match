@@ -11,22 +11,23 @@ var View = {
     this.open_modal_handle("images/start_modal.png");
     Controller.get_deck(); // calls to double the imgs to make the deck and it's callback functions.
     this.display_stats();
+    $('.pause_butt').empty();    
     $(".pause_butt")
-      .text("STOP")
-      .on("click", this.pause_theme_music); // click handle for reset button.
+      .append('<span class="glyphicon glyphicon-volume-off"></span>')
+      .on("click", this.pause_theme_music); // click handle for music pause button.
     $(".reset_butt")
       .text("RESET")
-      .on("click", Controller.reset_game);
+      .on("click", Controller.reset_game); // click handle for reset button.
   },
 
   pause_theme_music() {
-    $(".pause_butt").text(
-      !model.theme_music.paused ? "PLAY" : "STOP"
-    );
-
     if (!model.theme_music.paused) {
+      $('.pause_butt').empty();
+      $('.pause_butt').append('<span class="glyphicon glyphicon-volume-up"></span>');
       model.theme_music.pause();
     } else {
+      $('.pause_butt').empty();
+      $('.pause_butt').append('<span class="glyphicon glyphicon-volume-off"></span>');
       model.theme_music.play();
     }
   },
