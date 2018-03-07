@@ -80,6 +80,17 @@ var Controller = {
     if (model.first_rsc === null) {
       model.first_card = this;
       model.first_rsc = $(this).attr("resource");
+      clearInterval(timer);
+      if (model.happy_points === 0 || model.match_count === 9) {
+        model.keep_going = false;
+        model.clickable = false;
+      } else {
+        model.keep_going = true;
+      }
+      timer = setInterval(() => {
+        View.happy_bar();
+      }, 1500);
+
       // console.log(model.first_rsc);
     } else {
       model.second_card = this;
@@ -127,9 +138,7 @@ var Controller = {
     if (model.match_count === 9) {
       // console.log("you got 9 matches YOU WIN");
       model.games_played++;
-      model.happy_points += 8;
       model.accuracy = parseInt(model.match_count / model.attempts * 100);
-      model.keep_going = false;
       View.display_stats();
       $(".close_modal_button").css("display", "none");
       View.open_modal_handle("images/win_modal.png");

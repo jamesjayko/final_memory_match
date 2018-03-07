@@ -144,23 +144,23 @@ p {
   align-items: center;
   position: absolute;
   height: 100%;
-  width: 38%;
+  width: 30%;
   background-color: #ffcb0070;
   box-shadow: inset 0px 0px 0px 3px rgba(255, 250, 198, 0.562);
-  left: 62%;
+  left: 70%;
   padding: 0;
 }
 
 #civ_happy_bar {
   position: absolute;
-  width: 62%;
+  width: 70%;
   height: 100%;
   background-color: #edc529;
 }
 
 #civ_face_container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   position: relative;
   padding: 0;
   height: 35%;
