@@ -56,6 +56,7 @@ var View = {
 
   set_era_change() {
     model.new_era.play();
+    this.happy_bar();
     if (model.eras[model.eras_index] === "renaissance") {
       this.open_modal_handle("images/renaissance_modal.png");
       $("#app_area").css("background-image", "url(images/bg2.jpg)");
@@ -75,12 +76,13 @@ var View = {
   },
 
   happy_bar() {
-    // how much to decrement happy_points and golden age will trigger 1/2 the amount
+    // how much to decrement happy_points and golden age will trigger 1/2 the amount.
+    // console.log(model.happy_points);
     if (model.keep_going == true) {
-      if (model.happy_points <= 64 && model.happy_points > 0) {
+      if (model.happy_points <= 70 && model.happy_points > 0) {
         model.happy_points -= 2;
         // console.log("it's going down by 2", model.happy_points);
-      } else if (model.happy_points > 64) {
+      } else if (model.happy_points > 70) {
         model.happy_points -= 1;
         // console.log("it's going down by 1", model.happy_points);
       } else if (model.happy_points === 0 && model.keep_going === true) {
@@ -89,6 +91,7 @@ var View = {
       }
       $("#civ_happy_bar").css("width", model.happy_points + "%"); // adjusts the width of the happiness bar
     } else {
+      $("#civ_happy_bar").css("width", model.happy_points + "%"); // adjusts the width of the happiness bar
       return;
     }
   },
@@ -106,6 +109,7 @@ var View = {
   open_modal_handle(modal_custom) {
     // console.log("modal opened!");
     model.keep_going = false;
+    clearInterval(timer);    
     $(".modal_content img").remove();
     let modal_img = $("<img>", {
       src: modal_custom,
@@ -125,18 +129,8 @@ var View = {
   },
 
   close_modal_handle() {
-    clearInterval(timer);
     $("#modal, .close_modal_button").on("click", () => {
       model.modal.style.display = "none";
-      if (model.happy_points === 0 || model.match_count === 9) {
-        model.keep_going = false;
-        model.clickable = false;
-      } else {
-        model.keep_going = true;
-      }
-      timer = setInterval(() => {
-        this.happy_bar();
-      }, 1500);
       $("#modal, .close_modal_button").off("click");
     });
   }

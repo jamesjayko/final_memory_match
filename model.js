@@ -4,7 +4,7 @@ function Model() {
   this.match_count = 0;
   this.attempts = 0;
   this.accuracy = 0;
-  this.happy_points = 64;
+  this.happy_points = 70;
   this.keep_going = false;
   this.clickable = true;
   this.first_card = null;
