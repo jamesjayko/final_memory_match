@@ -2,7 +2,7 @@ var Controller = {
   get_deck() {
     // loops thru the obj array to double itself into a new array and calls the random_deck().
     while (model.deck.length < 10) {
-      for (var i = 0; i < cards.length; i++) {
+      for (let i = 0; i < cards.length; i++) {
         model.deck.push(cards[i]);
       }
     }
@@ -11,7 +11,7 @@ var Controller = {
 
   random_deck() {
     // randomizes the deck made from get_deck() and calls the set_deck().
-    for (var i = model.deck.length - 1; i > 0; i--) {
+    for (let i = model.deck.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
       let temp = model.deck[i];
       model.deck[i] = model.deck[j];
@@ -104,7 +104,10 @@ var Controller = {
   check_match() {
     if (model.first_rsc === model.second_rsc) {
       model.match_count++;
-      model.happy_points += 8;
+      model.happy_points += 8;        
+      if (model.happy_points >= 100) {
+        model.happy_points = 100;        
+      }
       // console.log("they match!");
       model.match_found.play();
       this.check_win();
@@ -153,8 +156,8 @@ var Controller = {
     $("#app_area").css("background-image", "url(images/bg1.jpg)");
     $("#game_area .flip3d").remove();
     View.display_stats();
-    $(".pause_butt").off("click");
-    $(".reset_butt").off("click");
+    $(".pause_btn").off("click");
+    $(".reset_btn").off("click");
     View.initialize_game();
   }
 };
