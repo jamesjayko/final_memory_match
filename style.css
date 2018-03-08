@@ -75,15 +75,14 @@ p {
   align-items: center;
   flex-flow: row wrap;
   height: 100%;
-  /* background-color: lightblue; */
 }
 
-.reset_butt {
+.reset_btn {
   margin-top: 1%;
   left: 1%;
 }
 
-.pause_butt {
+.pause_btn {
   margin-top: 1%;
   left: 1%;
 }
@@ -127,13 +126,6 @@ p {
   padding: 0;
   background-color: rgb(49, 49, 49);
 }
-/* #civ_happy_container :nth-child(2){
-    position: absolute;
-    height: 100%;
-    width: 74%;
-    border-right: solid 3px #edc529;
-    padding: 0;
-} */
 
 #civ_happy_container :nth-child(1) {
   font-size: 1.5vmin;
@@ -232,7 +224,7 @@ p {
 }
 
 .fade_line {
-  line-height: 50px;
+  line-height: 7vh;
   height: 1px;
   background: #ecdd36;
   background: -webkit-gradient(
@@ -302,17 +294,12 @@ p {
   text-align: center;
 }
 
-#happy_lose_modal :nth-child(2) {
-  display: flex;
-  justify-content: center;
-}
 .close_modal_button {
   top: 85%;
   position: absolute;
 }
 
 .modal {
-  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
 
