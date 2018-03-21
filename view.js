@@ -6,19 +6,29 @@ var timer;
 
 var View = {
   initialize_game() {
-    model.theme_music.play();
+    this.check_theme_music();
     clearInterval(timer);
     this.open_modal_handle("images/start_modal.png");
     Controller.get_deck(); // calls to double the imgs to make the deck and it's callback functions.
     $("#civ_happy_bar").css("width", model.happy_points + "%"); // adjusts the width of the happiness bar
-    this.display_stats();
-    $('.pause_btn').empty();    
-    $(".pause_btn")
-      .append('<span class="glyphicon glyphicon-volume-off"></span>')
-      .on("click", this.pause_theme_music); // click handle for music pause button.
+    this.display_stats(); 
     $(".reset_btn")
       .text("RESET")
       .on("click", Controller.reset_game); // click handle for reset button.
+  },
+
+  check_theme_music() {
+    $('.pause_btn').empty();   
+    if(localStorage.civ_music !== "true") {
+      $(".pause_btn")
+      .append('<span class="glyphicon glyphicon-volume-up"></span>')
+      .on("click", this.pause_theme_music); // click handle for music pause button.
+    } else {
+      $(".pause_btn")
+      .append('<span class="glyphicon glyphicon-volume-off"></span>')
+      .on("click", this.pause_theme_music); // click handle for music pause button.
+      model.theme_music.play();
+    }
   },
 
   pause_theme_music() {
@@ -26,10 +36,12 @@ var View = {
       $('.pause_btn').empty();
       $('.pause_btn').append('<span class="glyphicon glyphicon-volume-up"></span>');
       model.theme_music.pause();
+      localStorage.civ_music = false;
     } else {
       $('.pause_btn').empty();
       $('.pause_btn').append('<span class="glyphicon glyphicon-volume-off"></span>');
       model.theme_music.play();
+      localStorage.civ_music = true;
     }
   },
 
